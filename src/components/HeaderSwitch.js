@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 
-function HeaderSwitch() {
-  const [header, setHeader] = useState(false);
+function HeaderSwitch({ header, toggleHeader }) {
+  const dispatch = useDispatch();
 
   return (
     <>
@@ -10,13 +10,14 @@ function HeaderSwitch() {
           className="form-check-input"
           type="checkbox"
           id="headerSwitch"
-          onChange={() => setHeader(!header)}
+          onChange={(e) => dispatch(toggleHeader(e.target.checked))}
+          checked={header.show}
         />
         <label className="form-check-label" htmlFor="headerSwitch">
           header
         </label>
       </div>
-      {header && <input className="form-control mb-3" type="text" />}
+      {header.show && <input className="form-control mb-3" type="text" />}
     </>
   );
 }
