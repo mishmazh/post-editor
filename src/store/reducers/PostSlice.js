@@ -2,11 +2,11 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   post: {
-    title: "",
-    desc: "",
+    title: "Title",
+    desc: "Some description",
     header: {
       show: false,
-      text: "",
+      text: "Header",
     },
     image: {
       show: false,
@@ -41,7 +41,7 @@ export const postSlice = createSlice({
       localStorage.setItem("post-editor", JSON.stringify(state.post));
     },
     getLocalData(state) {
-      state.post = JSON.parse(localStorage.getItem("post-editor"));
+      state.post = JSON.parse(localStorage.getItem("post-editor")) || state.post;
     },
   },
 });
