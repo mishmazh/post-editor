@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { postSlice } from "../store/reducers/PostSlice";
 
 function Settings() {
+  const dispatch = useDispatch();
   const {
     post: { title, desc, header, image },
   } = useSelector((state) => state.postReducer);
@@ -15,8 +16,8 @@ function Settings() {
     toggleImage,
     changeHeader,
     changeImage,
+    saveChanges,
   } = postSlice.actions;
-  const dispatch = useDispatch();
 
   return (
     <div className="p-4">
@@ -45,7 +46,13 @@ function Settings() {
         changeImage={changeImage}
       />
 
-      <button className="btn btn-primary mt-3">Save</button>
+      <button
+        className="btn btn-primary mt-3"
+        type="button"
+        onClick={() => dispatch(saveChanges())}
+      >
+        Save
+      </button>
     </div>
   );
 }

@@ -22,6 +22,7 @@ function HeaderSwitch({ header, toggleHeader, changeHeader }) {
           className="form-control mb-3"
           type="text"
           onChange={(e) => dispatch(changeHeader(e.target.value))}
+          value={header.text}
         />
       )}
     </>

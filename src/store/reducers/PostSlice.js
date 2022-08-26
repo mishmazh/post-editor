@@ -37,6 +37,12 @@ export const postSlice = createSlice({
     changeImage(state, action) {
       state.post.image.elem = action.payload;
     },
+    saveChanges(state) {
+      localStorage.setItem("post-editor", JSON.stringify(state.post));
+    },
+    getLocalData(state) {
+      state.post = JSON.parse(localStorage.getItem("post-editor"));
+    },
   },
 });
 

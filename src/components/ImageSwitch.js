@@ -1,12 +1,8 @@
 import { useDispatch } from "react-redux";
+import DragAndDrop from "./DragAndDrop";
 
 function ImageSwitch({ image, toggleImage, changeImage }) {
   const dispatch = useDispatch();
-
-  const changeImageHandler = (e) => {
-    e.preventDefault();
-    dispatch(changeImage(e.target.files[0]));
-  };
 
   return (
     <>
@@ -16,6 +12,7 @@ function ImageSwitch({ image, toggleImage, changeImage }) {
           type="checkbox"
           id="imageSwitch"
           onChange={(e) => dispatch(toggleImage(e.target.checked))}
+          checked={image.show}
         />
         <label className="form-check-label" htmlFor="imageSwitch">
           image
@@ -23,7 +20,7 @@ function ImageSwitch({ image, toggleImage, changeImage }) {
       </div>
       {image.show && (
         <div className="mt-3">
-          <input type="file" accept="image/*" onChange={changeImageHandler} />
+          <DragAndDrop changeImage={changeImage}/>
         </div>
       )}
     </>

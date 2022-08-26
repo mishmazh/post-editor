@@ -11,9 +11,11 @@ function View() {
       <div className="card mb-3">
         {header.show && <div className="card-header">{header.text}</div>}
         <div className="card-body p-0">
-          <div>
-            <img src="https://sun9-3.userapi.com/impg/AouKhIutuJB2q_Q-bspPGKAIf6pn4xw8EdPEfQ/vCkePhGb_4k.jpg?size=465x499&quality=95&sign=31364f803367d8c9398530273507163a&type=album" alt="preview" />
-          </div>
+          {image.show && (
+            <div className="image-wrapper">
+              <img src={image.elem} alt="preview" />
+            </div>
+          )}
           <div className="p-3">
             <h4 className="card-title">{title}</h4>
             <p className="card-text">{desc}</p>
