@@ -5,8 +5,17 @@ import { useDispatch, useSelector } from "react-redux";
 import { postSlice } from "../store/reducers/PostSlice";
 
 function Settings() {
-  const { title, desc, header, image } = useSelector((state) => state.postReducer);
-  const { changeTitle, changeDesc, toggleHeader } = postSlice.actions;
+  const {
+    post: { title, desc, header, image },
+  } = useSelector((state) => state.postReducer);
+  const {
+    changeTitle,
+    changeDesc,
+    toggleHeader,
+    toggleImage,
+    changeHeader,
+    changeImage,
+  } = postSlice.actions;
   const dispatch = useDispatch();
 
   return (
@@ -25,8 +34,16 @@ function Settings() {
         onChange={(e) => dispatch(changeDesc(e.target.value))}
       />
 
-      <HeaderSwitch header={header} image={image} toggleHeader={toggleHeader}/>
-      <ImageSwitch />
+      <HeaderSwitch
+        header={header}
+        toggleHeader={toggleHeader}
+        changeHeader={changeHeader}
+      />
+      <ImageSwitch
+        image={image}
+        toggleImage={toggleImage}
+        changeImage={changeImage}
+      />
 
       <button className="btn btn-primary mt-3">Save</button>
     </div>

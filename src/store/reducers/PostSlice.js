@@ -1,15 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  title: "123",
-  desc: "456",
-  header: {
-    show: true,
-    text: "",
-  },
-  image: {
-    show: false,
-    elem: null,
+  post: {
+    title: "",
+    desc: "",
+    header: {
+      show: false,
+      text: "",
+    },
+    image: {
+      show: false,
+      elem: null,
+    },
   },
 };
 
@@ -18,13 +20,22 @@ export const postSlice = createSlice({
   initialState,
   reducers: {
     changeTitle(state, action) {
-      state.title = action.payload;
+      state.post.title = action.payload;
     },
     changeDesc(state, action) {
-      state.desc = action.payload;
+      state.post.desc = action.payload;
     },
     toggleHeader(state, action) {
-      state.header.show = action.payload;
+      state.post.header.show = action.payload;
+    },
+    toggleImage(state, action) {
+      state.post.image.show = action.payload;
+    },
+    changeHeader(state, action) {
+      state.post.header.text = action.payload;
+    },
+    changeImage(state, action) {
+      state.post.image.elem = action.payload;
     },
   },
 });

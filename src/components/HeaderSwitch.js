@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 
-function HeaderSwitch({ header, toggleHeader }) {
+function HeaderSwitch({ header, toggleHeader, changeHeader }) {
   const dispatch = useDispatch();
 
   return (
@@ -17,7 +17,13 @@ function HeaderSwitch({ header, toggleHeader }) {
           header
         </label>
       </div>
-      {header.show && <input className="form-control mb-3" type="text" />}
+      {header.show && (
+        <input
+          className="form-control mb-3"
+          type="text"
+          onChange={(e) => dispatch(changeHeader(e.target.value))}
+        />
+      )}
     </>
   );
 }

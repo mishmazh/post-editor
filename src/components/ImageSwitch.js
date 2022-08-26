@@ -1,7 +1,12 @@
-import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 
-function ImageSwitch() {
-  const [image, setImage] = useState(false);
+function ImageSwitch({ image, toggleImage, changeImage }) {
+  const dispatch = useDispatch();
+
+  const changeImageHandler = (e) => {
+    e.preventDefault();
+    dispatch(changeImage(e.target.files[0]));
+  };
 
   return (
     <>
@@ -10,13 +15,17 @@ function ImageSwitch() {
           className="form-check-input"
           type="checkbox"
           id="imageSwitch"
-          onChange={() => setImage(!image)}
+          onChange={(e) => dispatch(toggleImage(e.target.checked))}
         />
         <label className="form-check-label" htmlFor="imageSwitch">
           image
         </label>
       </div>
-      {image && <textarea className="form-control mt-3"></textarea>}
+      {image.show && (
+        <div className="mt-3">
+          <input type="file" accept="image/*" onChange={changeImageHandler} />
+        </div>
+      )}
     </>
   );
 }
