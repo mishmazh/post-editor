@@ -11,7 +11,7 @@ function View() {
       <div className="card mb-3">
         {header.show && <div className="card-header">{header.text}</div>}
         <div className="card-body p-0">
-          {image.show && (
+          {image.show && image.elem && (
             <div className="image-wrapper">
               <img src={image.elem} alt="preview" />
             </div>
