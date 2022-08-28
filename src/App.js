@@ -6,26 +6,29 @@ import { postSlice } from "./store/reducers/PostSlice";
 
 function App() {
   const dispatch = useDispatch();
-  const { getLocalData } = postSlice.actions;
+  const { getPostData } = postSlice.actions;
 
   useEffect(() => {
-    dispatch(getLocalData());
+    dispatch(getPostData());
   }, []);
 
   return (
-    <div className="container-fluid">
-      <div className="row">
-        <div className="col-6 text-bg-light">
-          <Settings />
-        </div>
-        <div className="col-6">
-          <div className="row align-items-center">
-            <View />
+    <>
+      <div className="background" />
+      <div className="container">
+        <div className="row">
+          <div className="col-6">
+            <Settings />
+          </div>
+          <div className="col-6">
+            <div className="row align-items-center">
+              <View />
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  );
+    </>
+  )
 }
 
 export default App;

@@ -1,13 +1,14 @@
-import React from "react";
 import { useSelector } from "react-redux";
+import Alert from "./Alert";
 
 function View() {
   const {
-    post: { title, desc, header, image },
+    post: { title, desc, header, image }, alert
   } = useSelector((state) => state.postReducer);
 
   return (
-    <div className="p-4">
+    <div className="view m-4">
+      {alert && <Alert />}
       <div className="card mb-3">
         {header.show && <div className="card-header">{header.text}</div>}
         <div className="card-body p-0">

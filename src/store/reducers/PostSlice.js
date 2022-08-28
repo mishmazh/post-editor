@@ -13,12 +13,17 @@ const initialState = {
       elem: null,
     },
   },
+  alert: false,
 };
 
 export const postSlice = createSlice({
   name: "post",
   initialState,
   reducers: {
+    getPostData(state) {
+      state.post =
+          JSON.parse(localStorage.getItem("post-editor")) || state.post;
+    },
     changeTitle(state, action) {
       state.post.title = action.payload;
     },
@@ -39,10 +44,12 @@ export const postSlice = createSlice({
     },
     saveChanges(state) {
       localStorage.setItem("post-editor", JSON.stringify(state.post));
+
+      state.alert = true;
     },
-    getLocalData(state) {
-      state.post = JSON.parse(localStorage.getItem("post-editor")) || state.post;
-    },
+    hideAlert(state) {
+      state.alert = false;
+    }
   },
 });
 

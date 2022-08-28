@@ -17,7 +17,16 @@ function Settings() {
     changeHeader,
     changeImage,
     saveChanges,
+    hideAlert,
   } = postSlice.actions;
+
+  const saveChangesHandler = () => {
+    dispatch(saveChanges());
+
+    setTimeout(() => {
+      dispatch(hideAlert());
+    }, 2000);
+  };
 
   return (
     <div className="p-4">
@@ -49,7 +58,7 @@ function Settings() {
       <button
         className="btn btn-primary mt-3"
         type="button"
-        onClick={() => dispatch(saveChanges())}
+        onClick={saveChangesHandler}
       >
         Save
       </button>

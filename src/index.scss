@@ -1,5 +1,13 @@
 @import "~bootstrap/scss/bootstrap";
 
+.background {
+  position: fixed;
+  width: 50%;
+  height: 100%;
+  background-color: #f5faff;
+  z-index: -1;
+}
+
 .row {
   height: 100vh;
 }
@@ -27,4 +35,14 @@
     height: 100%;
     object-fit: cover;
   }
+}
+
+.view {
+  position: relative;
+}
+
+.alert-primary {
+  position: absolute;
+  top: -67px;
+  right: 13px;
 }
