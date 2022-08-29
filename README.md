@@ -12,3 +12,4 @@
 3. Bootstrap
 
 ## Deploy - GitHub Pages
+https://xofyerg.github.io/post-editor/
