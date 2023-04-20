@@ -15,18 +15,18 @@ function App() {
   return (
     <>
       <div className="background" />
-      <div className="container">
-        <div className="row">
-          <div className="col-6">
-            <Settings />
-          </div>
-          <div className="col-6">
-            <div className="row align-items-center">
-              <View />
+        <div className="container">
+          <div className="row">
+            <div className="col-md-6">
+              <Settings />
+            </div>
+            <div className="col-md-6">
+              <div className="row align-items-center">
+                <View />
+              </div>
             </div>
           </div>
         </div>
-      </div>
     </>
   )
 }
